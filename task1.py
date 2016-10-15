@@ -14,6 +14,11 @@ for µ in µs:
     x[0, :] = x_0
     for i in range(1, 101):
         x[i, :] = f(µ, x[i - 1, :])
+    plt.figure()
+    plt.plot(x[:, 10], range(101))
+    plt.xlabel("x")
+    plt.ylabel("k")
+    plt.savefig("mu={}.png".format(µ))
     x_test = x[100, :]
     for i in range(100):
         x_test = f(µ, x_test)
