@@ -25,9 +25,19 @@ for µ in µs:
     plt.ylim([0, 110])
     plt.savefig("mu={}.png".format(µ))
     x_test = x[99, :]
-    print(Counter(np.around(x_test, decimals=3)))
-    # for i in range(100):
-    #     x_test = f(µ, x_test)
-    #     if np.allclose(x_test, x[100, :], atol=1.e-4):
-    #         print("µ = {} Order = {}".format(µ, i + 1))
-    #         break
+    # counts = dict(Counter(np.around(x_test, decimals=3)))
+    # values = list(filter(lambda x: counts[x] > 6, counts.keys()))
+    # print(µ)
+    # print(counts)
+    # print(list(filter(lambda x: counts[x] > 6, counts.keys())))
+    # for v in values:
+    #     for i in range(100):
+    #         tmp = f(µ, v)
+    #         if tmp == v:
+    #             print('µ = {} value = {} order = {}'.format(µ, v, i))
+    #             break
+    for i in range(100):
+        x_test = f(µ, x_test)
+        if np.allclose(x_test, x[99, :], atol=1.e-4):
+            print("µ = {} Order = {}".format(µ, i + 1))
+            break
